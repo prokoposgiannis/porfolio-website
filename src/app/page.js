@@ -1,18 +1,13 @@
-import SideBar from "@/app/components/SideBar";
+"use client";
+
 import MainBody from "@/app/components/MainBody";
 
 export default function Home() {
   return (
-    <div className="flex items-center justify-center h-screen w-full">
-      <div className="w-full">
-        <div className="w-1/4 m-auto rounded-md p-4">
-          <div className="flex-1 flex w-full justify-between"></div>
-          <h1>Hello World</h1>
-        </div>
+    <div className="flex h-screen bg-gray-200">
+      <div className="relative flex flex-col flex-1 lg:overflow-y-auto lg:overflow-x-hidden">
+        <MainBody />
       </div>
-
-      {/* <SideBar />
-      <MainBody /> */}
     </div>
   );
 }
