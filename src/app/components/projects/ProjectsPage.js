@@ -1,9 +1,10 @@
 import Link from "next/link";
+import ProjectPage from "@/app/components/projects/ProjectPage";
 
 export default function ProjectsPage() {
   return (
-    <div className="flex flex-row">
-      <h1>Projects Name</h1>
+    <div className="flex bg-slate-700">
+      <ProjectPage />
     </div>
   );
 }
