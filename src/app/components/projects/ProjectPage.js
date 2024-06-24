@@ -7,23 +7,20 @@ export default function Project() {
   const image = "/image-place-holder.jpg";
 
   return (
-    <div className="flex flex-col h-full w-full">
-      <h1>{title}</h1>
-      <div className="flex flex-row w-full">
-        <div className="w-1/2">
-          <Image
-            src={image}
-            width={400}
-            height={400}
-            layout="responsive"
-            objectFit="cover"
-            className="rounded-full"
-            alt="Picture of a project"
-          />
-        </div>
-        <div className="flex flex-col w-1/2 p-6">
-          <p className="text-justify">{description}</p>
-        </div>
+    <div className="flex flex-row w-full h-full p-6">
+      <div className="relative flex px-3 flex-col w-1/2">
+        <Image
+          src={image}
+          fill
+          style={{
+            objectFit: "contain",
+          }}
+          alt="Picture of a project"
+        />
+      </div>
+      <div className="flex flex-col overflow-x-auto px-3 w-1/2">
+        <h1 className="text-xl font-bold">{title}</h1>
+        <p className="text-justify">{description}</p>
       </div>
     </div>
   );
