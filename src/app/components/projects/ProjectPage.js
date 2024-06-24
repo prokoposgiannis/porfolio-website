@@ -1,26 +1,32 @@
 import Image from "next/image";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faArrowUpRightFromSquare } from "@fortawesome/free-solid-svg-icons";
 
-export default function Project() {
-  const title = "Smarter by Words";
-  const description =
-    "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.";
-  const image = "/image-place-holder.jpg";
+export default function Project({ project }) {
+  if (!project) {
+    return <div>No project data available</div>;
+  }
 
   return (
     <div className="flex flex-row w-full h-full p-6">
       <div className="relative flex px-3 flex-col w-1/2">
         <Image
-          src={image}
+          src={project.image}
           fill
           style={{
             objectFit: "contain",
           }}
+          sizes="100vw"
           alt="Picture of a project"
         />
       </div>
-      <div className="flex flex-col overflow-x-auto px-3 w-1/2">
-        <h1 className="text-xl font-bold">{title}</h1>
-        <p className="text-justify">{description}</p>
+      <div className="relative flex flex-col overflow-x-auto px-3 w-1/2">
+        <h1 className="text-xl font-bold">{project.title}</h1>
+        <p className="text-justify">{project.description}</p>
+        <FontAwesomeIcon
+          icon={faArrowUpRightFromSquare}
+          className="absolute bottom-0 right-0 text-2xl px-6 text-gray-800 hover:text-3xl"
+        />
       </div>
     </div>
   );
