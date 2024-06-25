@@ -16,8 +16,6 @@ import {
 
 export default function MainBody() {
   const [currentProject, setCurrentProject] = useState(0);
-  const [isPrevDisabled, setIsPrevDisabled] = useState(true);
-  const [isNextDisabled, setIsNextDisabled] = useState(false);
 
   const handlePreviousClick = () => {
     if (currentProject !== 0) {
@@ -28,9 +26,6 @@ export default function MainBody() {
   const handleNextClick = () => {
     if (currentProject !== projects.length - 1) {
       setCurrentProject((prev) => prev + 1);
-      setIsPrevDisabled((prev) => !isPrevDisabled);
-    } else if (currentProject === projects.length - 1) {
-      setIsNextDisabled((prev) => !isPrevDisabled);
     }
   };
 
