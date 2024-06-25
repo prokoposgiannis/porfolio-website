@@ -25,6 +25,7 @@ export default function MainBody() {
 
   const handleNextClick = () => {
     if (currentProject !== projects.length - 1) {
+      setCurrentProject((prev) => prev + 1);
     }
   };
 
