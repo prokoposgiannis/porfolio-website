@@ -26,7 +26,7 @@ module.exports = {
         },
       },
       animation: {
-        float: 'float 6s ease-in-out infinite',
+        float: 'float 5s ease-in-out infinite',
       },
     },
   },

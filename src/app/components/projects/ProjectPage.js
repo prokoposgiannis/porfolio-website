@@ -23,11 +23,11 @@ export default function Project({ project }) {
       <div className="relative flex flex-col overflow-x-auto px-3 w-1/2">
         <h1 className="text-xl font-bold">{project.title}</h1>
         <p className="text-justify">{project.description}</p>
-        <div className="absolute bottom-0 right-0 flex flex-col user-select-none text-gray-800">
+        <div className="justify-center items-center absolute bottom-0 right-0 flex flex-col user-select-none text-gray-800">
           <FontAwesomeIcon
           icon={faArrowUpRightFromSquare}
-          className="text-xl text-gray-800 hover:text-2xl"
-          /><p>more info</p></div>
+          className="text-md transform transition-transform duration-50 hover:scale-150"
+          /><p>details</p></div>
       </div>
     </div>
   );

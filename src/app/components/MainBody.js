@@ -83,12 +83,12 @@ export default function MainBody() {
               className={`user-select-none text-xl ${
                 currentProject === 0
                   ? "text-gray-400"
-                  : "hover:text-2xl text-black"
+                  : "transform transition-transform duration-50 hover:scale-150 text-black"
               }`}
               onClick={handlePreviousClick}
             />
           </div>
-          <div className={`shadow-lg bg-gray-100 rounded-2xl transition-opacity duration-300 ${transitioning ? "opacity-0" : "opacity-100"}`}>
+          <div className={`shadow-lg bg-gray-100 rounded-2xl transition-opacity duration-100 ${transitioning ? "opacity-0" : "opacity-100"}`}>
             <ProjectPage project={projects[currentProject]} />
           </div>
 
@@ -98,7 +98,7 @@ export default function MainBody() {
               className={`user-select-none text-xl ${
                 currentProject === projects.length - 1
                   ? "text-gray-400"
-                  : "hover:text-2xl text-black"
+                  : "transform transition-transform duration-50 hover:scale-150 text-black"
               }`}
               onClick={handleNextClick}
             />
@@ -116,19 +116,19 @@ export default function MainBody() {
         <div className="user-select-none flex w-full justify-center flex-grow items-end pb-14 ">
           <FontAwesomeIcon
             icon={faGithub}
-            className="user-select-none text-4xl px-6 text-gray-600 hover:text-neutral-900 hover:text-5xl"
+            className="user-select-none text-4xl px-6 text-gray-600 hover:text-neutral-900 transform transition-transform duration-50 hover:scale-150"
           />
           <FontAwesomeIcon
             icon={faLinkedin}
-            className="user-select-none text-4xl px-6 text-gray-600 hover:text-sky-600 hover:text-5xl"
+            className="user-select-none text-4xl px-6 text-gray-600 hover:text-sky-600 transform transition-transform duration-50 hover:scale-150"
           />
           <FontAwesomeIcon
             icon={faFacebook}
-            className="user-select-none text-4xl px-6 text-gray-600  hover:text-blue-600 hover:text-5xl"
+            className="user-select-none text-4xl px-6 text-gray-600  hover:text-blue-600 transform transition-transform duration-50 hover:scale-150"
           />
           <FontAwesomeIcon
             icon={faSquareInstagram}
-            className="user-select-none text-4xl px-6 text-gray-600 hover:text-pink-600 hover:text-5xl"
+            className="user-select-none text-4xl px-6 text-gray-600 hover:text-pink-600 hover:transform transition-transform duration-50 hover:scale-150"
           />
         </div>
       </div>
