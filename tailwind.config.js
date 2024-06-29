@@ -19,7 +19,27 @@ module.exports = {
         "2/4.5": "55%",
         "2/3.5": "75%",
       },
+      keyframes: {
+        float: {
+          '0%, 100%': { transform: 'translateY(0)' },
+          '50%': { transform: 'translateY(-5px)' },
+        },
+      },
+      animation: {
+        float: 'float 5s ease-in-out infinite',
+      },
     },
   },
-  plugins: [],
+  plugins: [
+    function ({ addUtilities }) {
+      addUtilities({
+        '.user-select-none': {
+          '-webkit-user-select': 'none',
+          '-moz-user-select': 'none',
+          '-ms-user-select': 'none',
+          'user-select': 'none',
+        },
+      });
+    },
+  ],
 };

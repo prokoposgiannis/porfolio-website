@@ -2,10 +2,7 @@ import Image from "next/image";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowUpRightFromSquare } from "@fortawesome/free-solid-svg-icons";
 
-export default function Project({ project }) {
-  if (!project) {
-    return <div>No project data available</div>;
-  }
+export default function ProjectPage({ project }) {
 
   return (
     <div className="flex flex-row w-full h-full p-6">

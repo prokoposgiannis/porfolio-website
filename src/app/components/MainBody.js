@@ -16,16 +16,25 @@ import {
 
 export default function MainBody() {
   const [currentProject, setCurrentProject] = useState(0);
+  const [transitioning, setTransitioning] = useState(false);
 
   const handlePreviousClick = () => {
     if (currentProject !== 0) {
-      setCurrentProject((prev) => prev - 1);
+      setTransitioning(true);
+      setTimeout(() => {
+        setCurrentProject((prev) => prev - 1);
+        setTransitioning(false);
+      }, 100); // Match the duration of the transition
     }
   };
 
   const handleNextClick = () => {
     if (currentProject !== projects.length - 1) {
-      setCurrentProject((prev) => prev + 1);
+      setTransitioning(true);
+      setTimeout(() => {
+        setCurrentProject((prev) => prev + 1);
+        setTransitioning(false);
+      }, 100); // Match the duration of the transition
     }
   };
 
@@ -33,7 +42,7 @@ export default function MainBody() {
     {
       title: "Smarter by Words",
       description:
-        "This project features a minimal React website that presents a different, rare, or interesting Greek word with its definition each day. The word is then uploaded as a story on an Instagram account, which currently has over 170 active followers",
+        "This project features a minimal React website that presents a different, rare, or interesting Greek word with its definition each day. The word is then uploaded as a story on an Instagram account, which currently has over 170 active followers.",
       image: "/smarter-by-words-image.jpg",
     },
     {
@@ -71,54 +80,55 @@ export default function MainBody() {
           <div className="absolute -left-5 flex h-full items-center justify-center ">
             <FontAwesomeIcon
               icon={faChevronLeft}
-              className={`text-lg ${
+              className={`user-select-none text-xl ${
                 currentProject === 0
                   ? "text-gray-400"
-                  : "hover:text-xl text-black"
+                  : "transform transition-transform duration-50 hover:scale-150 text-black"
               }`}
               onClick={handlePreviousClick}
             />
           </div>
-          <div className=" shadow-lg  bg-gray-100 rounded-2xl">
+          <div className={`shadow-lg bg-gray-100 rounded-2xl transition-opacity duration-100 ${transitioning ? "opacity-0" : "opacity-100"}`}>
             <ProjectPage project={projects[currentProject]} />
           </div>
 
           <div className="flex h-full items-center justify-center absolute -right-5 ">
             <FontAwesomeIcon
               icon={faChevronRight}
-              className={`text-lg ${
+              className={`user-select-none text-xl ${
                 currentProject === projects.length - 1
                   ? "text-gray-400"
-                  : "hover:text-xl text-black"
+                  : "transform transition-transform duration-50 hover:scale-150 text-black"
               }`}
               onClick={handleNextClick}
             />
           </div>
         </div>
       </div>
-      <div className="flex flex-col items-center w-1/3 pt-1/4.6">
+      <div className="user-select-none flex flex-col items-center w-1/3 pt-1/4.6">
         <Image
           src="/face.png"
           width={300}
           height={300}
+          className="animate-float"
           alt="Picture of the author"
         />
-        <div className="flex w-full justify-center flex-grow items-end pb-14 ">
+        <div className="user-select-none flex w-full justify-center flex-grow items-end pb-14 ">
           <FontAwesomeIcon
             icon={faGithub}
-            className="text-4xl px-6 text-gray-600 hover:text-neutral-900 hover:text-5xl"
+            className="user-select-none text-4xl px-6 text-gray-600 hover:text-neutral-900 transform transition-transform duration-50 hover:scale-150"
           />
           <FontAwesomeIcon
             icon={faLinkedin}
-            className="text-4xl px-6 text-gray-600 hover:text-sky-600 hover:text-5xl"
+            className="user-select-none text-4xl px-6 text-gray-600 hover:text-sky-600 transform transition-transform duration-50 hover:scale-150"
           />
           <FontAwesomeIcon
             icon={faFacebook}
-            className="text-4xl px-6 text-gray-600  hover:text-blue-600 hover:text-5xl"
+            className="user-select-none text-4xl px-6 text-gray-600  hover:text-blue-600 transform transition-transform duration-50 hover:scale-150"
           />
           <FontAwesomeIcon
             icon={faSquareInstagram}
-            className="text-4xl px-6 text-gray-600 hover:text-pink-600 hover:text-5xl"
+            className="user-select-none text-4xl px-6 text-gray-600 hover:text-pink-600 hover:transform transition-transform duration-50 hover:scale-150"
           />
         </div>
       </div>
