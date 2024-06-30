@@ -24,7 +24,7 @@ export default function MainBody() {
       setTimeout(() => {
         setCurrentProject((prev) => prev - 1);
         setTransitioning(false);
-      }, 100); // Match the duration of the transition
+      }, 100); 
     }
   };
 
@@ -34,7 +34,7 @@ export default function MainBody() {
       setTimeout(() => {
         setCurrentProject((prev) => prev + 1);
         setTransitioning(false);
-      }, 100); // Match the duration of the transition
+      }, 100); 
     }
   };
 

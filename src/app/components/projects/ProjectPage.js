@@ -1,6 +1,8 @@
 import Image from "next/image";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowUpRightFromSquare } from "@fortawesome/free-solid-svg-icons";
+import Link from "next/link";
+
 
 export default function Project({ project }) {
   if (!project) {
@@ -27,7 +29,7 @@ export default function Project({ project }) {
           <FontAwesomeIcon
           icon={faArrowUpRightFromSquare}
           className="text-md transform transition-transform duration-50 hover:scale-150"
-          /><p>details</p></div>
+          /><Link href="/projectPage">Dashboard</Link></div>
       </div>
     </div>
   );
