@@ -1,8 +1,5 @@
 import Image from "next/image";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faArrowUpRightFromSquare } from "@fortawesome/free-solid-svg-icons";
 import Link from "next/link";
-
 
 export default function Project({ project }) {
   if (!project) {
@@ -22,14 +19,16 @@ export default function Project({ project }) {
           alt="Picture of a project"
         />
       </div>
-      <div className="relative flex flex-col overflow-x-auto px-3 w-1/2">
+      <div className="relative overflow-x-hidden flex flex-col px-3 w-1/2">
         <h1 className="text-xl font-bold">{project.title}</h1>
         <p className="text-justify">{project.description}</p>
-        <div className="justify-center items-center absolute bottom-0 right-0 flex flex-col user-select-none text-gray-800">
-          <FontAwesomeIcon
-          icon={faArrowUpRightFromSquare}
-          className="text-md transform transition-transform duration-50 hover:scale-150"
-          /><Link href="/projectPage">Dashboard</Link></div>
+      </div>
+      <div className="justify-center items-center absolute bottom-1 right-6 flex flex-col user-select-none hover:underline text-gray-800 text-md transform transition-transform duration-50 hover:scale-110">
+        <Link
+          href={`/projects/${project.title.toLowerCase().replace(/ /g, "-")}`}
+        >
+          details
+        </Link>
       </div>
     </div>
   );

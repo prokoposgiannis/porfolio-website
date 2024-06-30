@@ -4,8 +4,7 @@
 
 :root {
   --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 227, 242, 253;
-  --background-end-rgb: 107, 114, 128;
+  --background-rgb: 229, 231, 235;
 }
 
 /* @media (prefers-color-scheme: dark) {
@@ -16,18 +15,22 @@
   }
 } */
 
+html, body {
+  height: 100%;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+}
+
 body {
   color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+  background-color: rgb(var(--background-rgb));
 }
 
 @layer utilities {
   .text-balance {
     text-wrap: balance;
   }
+  .bg-gradient-to-transparent {
+    background: linear-gradient(to bottom, rgba(31, 41, 55, 1) 30%, rgba(229, 231, 235, 0));  }
 }

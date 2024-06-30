@@ -14,6 +14,8 @@ import {
   faChevronRight,
 } from "@fortawesome/free-solid-svg-icons";
 
+import TopBarLayout from "@/app/components/TopBarLayout";
+
 export default function MainBody() {
   const [currentProject, setCurrentProject] = useState(0);
   const [transitioning, setTransitioning] = useState(false);
@@ -24,7 +26,7 @@ export default function MainBody() {
       setTimeout(() => {
         setCurrentProject((prev) => prev - 1);
         setTransitioning(false);
-      }, 100); 
+      }, 100);
     }
   };
 
@@ -34,7 +36,7 @@ export default function MainBody() {
       setTimeout(() => {
         setCurrentProject((prev) => prev + 1);
         setTransitioning(false);
-      }, 100); 
+      }, 100);
     }
   };
 
@@ -59,79 +61,84 @@ export default function MainBody() {
     },
   ];
 
+  const social = [
+    { icon: faLinkedin, hoverColor: "hover:text-sky-600" },
+    { icon: faGithub, hoverColor: "hover:text-neutral-900" },
+    { icon: faFacebook, hoverColor: "hover:text-blue-600" },
+    { icon: faSquareInstagram, hoverColor: "hover:text-pink-600" },
+  ];
+
   return (
-    <div className="flex flex-grow overflow-y-hidden">
-      <div className="flex flex-col w-2/3 pl-1/4.6 pt-1/4.6">
-        <div className="h-1/3">
-          <h2 className="text-2xl font-medium text-gray-700 -ml-4">
-            my name is..
-          </h2>
-          <h1 className="text-5xl font-bold text-gray-900 mt-4">
-            Prokópos. John Prokopos
-          </h1>
-          <p className="max-w-lg ml-1 mt-2 text-gray-700">
-            I’m a front-end JavaScript developer who loves bringing ideas to
-            life through mobile apps, web apps, and websites. Take a look at
-            some of my work below!
-          </p>
+    <TopBarLayout>
+      <div className="flex flex-col md:flex-row flex-grow px-16 pt-1/4.7 pb-12">
+        <div className="flex flex-col md:w-2/3">
+          <div className="mb-4">
+            <h2 className="-ml-4 text-2xl font-medium text-gray-700">
+              my name is..
+            </h2>
+            <h1 className="text-5xl font-bold text-gray-900 mt-4">
+              Prokópos. John Prokopos
+            </h1>
+            <p className="pl-1 max-w-lg mt-2 text-gray-700">
+              I’m a front-end JavaScript developer who loves bringing ideas to
+              life through mobile apps, web apps, and websites. Take a look at
+              some of my work below!
+            </p>
+          </div>
+
+          <div className="relative flex h-64 mt-5 md:h-2/3.5">
+            <div className="absolute left-0 flex h-full items-center justify-center">
+              <FontAwesomeIcon
+                icon={faChevronLeft}
+                className={`user-select-none text-xl ${
+                  currentProject === 0
+                    ? "text-gray-400"
+                    : "transform transition-transform duration-50 hover:scale-150 text-black"
+                }`}
+                onClick={handlePreviousClick}
+              />
+            </div>
+
+            <div
+              className={`h-full shadow-lg bg-gray-100 rounded-2xl transition-opacity duration-100 w-full ${
+                transitioning ? "opacity-0" : "opacity-100"
+              }`}
+            >
+              <ProjectPage project={projects[currentProject]} />
+            </div>
+
+            <div className="absolute right-0 flex h-full items-center justify-center">
+              <FontAwesomeIcon
+                icon={faChevronRight}
+                className={`user-select-none text-xl ${
+                  currentProject === projects.length - 1
+                    ? "text-gray-400"
+                    : "transform transition-transform duration-50 hover:scale-150 text-black"
+                }`}
+                onClick={handleNextClick}
+              />
+            </div>
+          </div>
         </div>
-
-        <div className="relative flex h-1/2.5">
-          <div className="absolute -left-5 flex h-full items-center justify-center ">
-            <FontAwesomeIcon
-              icon={faChevronLeft}
-              className={`user-select-none text-xl ${
-                currentProject === 0
-                  ? "text-gray-400"
-                  : "transform transition-transform duration-50 hover:scale-150 text-black"
-              }`}
-              onClick={handlePreviousClick}
-            />
-          </div>
-          <div className={`shadow-lg bg-gray-100 rounded-2xl transition-opacity duration-100 ${transitioning ? "opacity-0" : "opacity-100"}`}>
-            <ProjectPage project={projects[currentProject]} />
-          </div>
-
-          <div className="flex h-full items-center justify-center absolute -right-5 ">
-            <FontAwesomeIcon
-              icon={faChevronRight}
-              className={`user-select-none text-xl ${
-                currentProject === projects.length - 1
-                  ? "text-gray-400"
-                  : "transform transition-transform duration-50 hover:scale-150 text-black"
-              }`}
-              onClick={handleNextClick}
-            />
+        <div className="md:pl-14 user-select-none flex flex-col items-center md:w-1/3">
+          <Image
+            src="/face.png"
+            width={300}
+            height={300}
+            className="animate-float"
+            alt="Picture of the author"
+          />
+          <div className="user-select-none flex w-full justify-center flex-grow items-end">
+            {social.map((s) => (
+              <FontAwesomeIcon
+                key={s.icon.iconName}
+                icon={s.icon}
+                className={`user-select-none text-3xl px-4 text-gray-600 transition-transform duration-50 transform hover:scale-150 ${s.hoverColor}`}
+              />
+            ))}
           </div>
         </div>
       </div>
-      <div className="user-select-none flex flex-col items-center w-1/3 pt-1/4.6">
-        <Image
-          src="/face.png"
-          width={300}
-          height={300}
-          className="animate-float"
-          alt="Picture of the author"
-        />
-        <div className="user-select-none flex w-full justify-center flex-grow items-end pb-14 ">
-          <FontAwesomeIcon
-            icon={faGithub}
-            className="user-select-none text-4xl px-6 text-gray-600 hover:text-neutral-900 transform transition-transform duration-50 hover:scale-150"
-          />
-          <FontAwesomeIcon
-            icon={faLinkedin}
-            className="user-select-none text-4xl px-6 text-gray-600 hover:text-sky-600 transform transition-transform duration-50 hover:scale-150"
-          />
-          <FontAwesomeIcon
-            icon={faFacebook}
-            className="user-select-none text-4xl px-6 text-gray-600  hover:text-blue-600 transform transition-transform duration-50 hover:scale-150"
-          />
-          <FontAwesomeIcon
-            icon={faSquareInstagram}
-            className="user-select-none text-4xl px-6 text-gray-600 hover:text-pink-600 hover:transform transition-transform duration-50 hover:scale-150"
-          />
-        </div>
-      </div>
-    </div>
+    </TopBarLayout>
   );
 }
