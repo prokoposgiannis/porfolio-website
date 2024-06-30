@@ -62,10 +62,26 @@ export default function MainBody() {
   ];
 
   const social = [
-    { icon: faLinkedin, hoverColor: "hover:text-sky-600" },
-    { icon: faGithub, hoverColor: "hover:text-neutral-900" },
-    { icon: faFacebook, hoverColor: "hover:text-blue-600" },
-    { icon: faSquareInstagram, hoverColor: "hover:text-pink-600" },
+    {
+      icon: faLinkedin,
+      hoverColor: "hover:text-sky-600",
+      url: "https://www.linkedin.com/in/john-prokopos",
+    },
+    {
+      icon: faGithub,
+      hoverColor: "hover:text-neutral-900",
+      url: "https://github.com/prokoposgiannis",
+    },
+    {
+      icon: faFacebook,
+      hoverColor: "hover:text-blue-600",
+      url: "https://www.facebook.com/prokoposgiannis",
+    },
+    {
+      icon: faSquareInstagram,
+      hoverColor: "hover:text-pink-600",
+      url: "https://www.instagram.com/prokopos.giannis",
+    },
   ];
 
   return (
@@ -129,12 +145,18 @@ export default function MainBody() {
             alt="Picture of the author"
           />
           <div className="user-select-none flex w-full justify-center flex-grow items-end">
-            {social.map((s) => (
-              <FontAwesomeIcon
+            {social.map((s, index) => (
+              <a
                 key={s.icon.iconName}
-                icon={s.icon}
-                className={`user-select-none text-3xl px-4 text-gray-600 transition-transform duration-50 transform hover:scale-150 ${s.hoverColor}`}
-              />
+                href={s.url}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <FontAwesomeIcon
+                  icon={s.icon}
+                  className={`user-select-none text-3xl px-4 text-gray-600 transition-transform duration-50 transform hover:scale-150 ${s.hoverColor}`}
+                />
+              </a>
             ))}
           </div>
         </div>
