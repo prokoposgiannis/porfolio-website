@@ -5,7 +5,7 @@ import TopBarLayout from "@/app/components/TopBarLayout";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faHouse } from "@fortawesome/free-solid-svg-icons";
 import Link from "next/link";
-import { fetchProjectFromFirestore } from "./fetchProjects";
+import { fetchProjectFromFirestore } from "@/lib/fetchProjects";
 
 export default function ProjectPage({ params }) {
   const [project, setProject] = useState(null);

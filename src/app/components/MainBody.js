@@ -3,8 +3,7 @@ import Image from "next/image";
 import ProjectPage from "@/app/components/projects/ProjectPage";
 import { useState, useEffect } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { db } from "@/firebase/firebaseConfig";
-import { getDocs, collection } from "firebase/firestore";
+import { fetchProjectsFromFirestore } from "@/lib/fetchProjects";
 import TopBarLayout from "@/app/components/TopBarLayout";
 import {
   faGithub,
@@ -17,19 +16,9 @@ import {
   faChevronRight,
 } from "@fortawesome/free-solid-svg-icons";
 
-async function fetchProjectsFromFirestore() {
-  const querySnapshot = await getDocs(collection(db, "projects"));
-  const data = [];
-  querySnapshot.forEach((doc) => {
-    data.push({ id: doc.id, ...doc.data() });
-  });
-  return data;
-}
-
 export default function MainBody() {
   const [currentProject, setCurrentProject] = useState(0);
   const [transitioning, setTransitioning] = useState(false);
-
   const [projects, setProjects] = useState([]);
 
   useEffect(() => {
@@ -59,28 +48,6 @@ export default function MainBody() {
       }, 100);
     }
   };
-
-  // const projects =
-  // [
-  //   {
-  //     title: "Smarter by Words",
-  //     description:
-  //       "This project features a minimal React website that presents a different, rare, or interesting Greek word with its definition each day. The word is then uploaded as a story on an Instagram account, which currently has over 170 active followers.",
-  //     image: "/smarter-by-words-image.jpg",
-  //   },
-  //   {
-  //     title: "Chatty John",
-  //     description:
-  //       "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut enim ad minim veniam, aboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
-  //     image: "/chatty-john-image.png",
-  //   },
-  //   {
-  //     title: "devExpert",
-  //     description:
-  //       "Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
-  //     image: "/dev-expert-image.png",
-  //   },
-  // ];
 
   const social = [
     {
@@ -187,3 +154,25 @@ export default function MainBody() {
     </TopBarLayout>
   );
 }
+
+// const projects =
+// [
+//   {
+//     title: "Smarter by Words",
+//     description:
+//       "This project features a minimal React website that presents a different, rare, or interesting Greek word with its definition each day. The word is then uploaded as a story on an Instagram account, which currently has over 170 active followers.",
+//     image: "/smarter-by-words-image.jpg",
+//   },
+//   {
+//     title: "Chatty John",
+//     description:
+//       "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut enim ad minim veniam, aboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+//     image: "/chatty-john-image.png",
+//   },
+//   {
+//     title: "devExpert",
+//     description:
+//       "Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+//     image: "/dev-expert-image.png",
+//   },
+// ];

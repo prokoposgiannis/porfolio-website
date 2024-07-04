@@ -1,4 +1,4 @@
-import { db, storage, ref, getDownloadURL } from "@/firebase/firebaseConfig";
+import { db } from "@/firebase/firebaseConfig";
 import { getDocs, collection, where, query } from "firebase/firestore";
 
 export async function fetchProjectsFromFirestore() {

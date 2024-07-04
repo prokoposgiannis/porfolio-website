@@ -1,6 +1,5 @@
 import { initializeApp } from "firebase/app";
 import { getFirestore } from "firebase/firestore";
-import { getStorage, ref, getDownloadURL } from "firebase/storage";
 
 const firebaseConfig = {
   apiKey: process.env.NEXT_PUBLIC_FIREBASE_API_KEY,
@@ -14,10 +13,5 @@ const firebaseConfig = {
 
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
-const storage = getStorage();
-const smwRef = ref(
-  storage,
-  "gs://portfolio-website-fd5dd.appspot.com/projectImages/smarter-by-words-image.jpg"
-);
 
-export { db, storage, getDownloadURL, ref };
+export { db };

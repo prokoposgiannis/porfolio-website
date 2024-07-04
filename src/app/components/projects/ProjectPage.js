@@ -10,7 +10,7 @@ export default function Project({ project }) {
     <div className="flex flex-row w-full h-full p-6">
       <div className="relative flex px-3 flex-col w-1/2">
         <Image
-          src={project.imageLocalPath}
+          src={project.imageUrls[0]}
           fill
           style={{
             objectFit: "contain",
