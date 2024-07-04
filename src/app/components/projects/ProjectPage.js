@@ -10,18 +10,19 @@ export default function Project({ project }) {
     <div className="flex flex-row w-full h-full p-6">
       <div className="relative flex px-3 flex-col w-1/2">
         <Image
-          src={project.image}
+          src={project.imageLocalPath}
           fill
           style={{
             objectFit: "contain",
           }}
-          sizes="100vw"
+          priority
+          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
           alt="Picture of a project"
         />
       </div>
       <div className="relative overflow-x-hidden flex flex-col px-3 w-1/2">
         <h1 className="text-xl font-bold">{project.title}</h1>
-        <p className="text-justify">{project.description}</p>
+        <p className="text-justify">{project.summary}</p>
       </div>
       <div className="justify-center items-center absolute bottom-1 right-6 flex flex-col user-select-none hover:underline text-gray-800 text-md transform transition-transform duration-50 hover:scale-110">
         <Link

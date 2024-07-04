@@ -37,7 +37,6 @@ const TopBarLayout = ({ children }) => {
           style={{ height: "200px" }}
         >
           <div className="flex text-center justify-center font-bold pt-5">
-            <h2 className="px-10">Projects</h2>
             <h2 className="px-10">About</h2>
             <h2 className="px-10">Contact</h2>
           </div>

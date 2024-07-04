@@ -1,24 +1,44 @@
+"use client";
 import Image from "next/image";
 import ProjectPage from "@/app/components/projects/ProjectPage";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { db } from "@/firebase/firebaseConfig";
+import { getDocs, collection } from "firebase/firestore";
+import TopBarLayout from "@/app/components/TopBarLayout";
 import {
   faGithub,
   faLinkedin,
   faFacebook,
   faSquareInstagram,
 } from "@fortawesome/free-brands-svg-icons";
-
 import {
   faChevronLeft,
   faChevronRight,
 } from "@fortawesome/free-solid-svg-icons";
 
-import TopBarLayout from "@/app/components/TopBarLayout";
+async function fetchProjectsFromFirestore() {
+  const querySnapshot = await getDocs(collection(db, "projects"));
+  const data = [];
+  querySnapshot.forEach((doc) => {
+    data.push({ id: doc.id, ...doc.data() });
+  });
+  return data;
+}
 
 export default function MainBody() {
   const [currentProject, setCurrentProject] = useState(0);
   const [transitioning, setTransitioning] = useState(false);
+
+  const [projects, setProjects] = useState([]);
+
+  useEffect(() => {
+    async function fetchData() {
+      const data = await fetchProjectsFromFirestore();
+      setProjects(data);
+    }
+    fetchData();
+  }, []);
 
   const handlePreviousClick = () => {
     if (currentProject !== 0) {
@@ -40,26 +60,27 @@ export default function MainBody() {
     }
   };
 
-  const projects = [
-    {
-      title: "Smarter by Words",
-      description:
-        "This project features a minimal React website that presents a different, rare, or interesting Greek word with its definition each day. The word is then uploaded as a story on an Instagram account, which currently has over 170 active followers.",
-      image: "/smarter-by-words-image.jpg",
-    },
-    {
-      title: "Chatty John",
-      description:
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut enim ad minim veniam, aboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
-      image: "/chatty-john-image.png",
-    },
-    {
-      title: "devExpert",
-      description:
-        "Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
-      image: "/dev-expert-image.png",
-    },
-  ];
+  // const projects =
+  // [
+  //   {
+  //     title: "Smarter by Words",
+  //     description:
+  //       "This project features a minimal React website that presents a different, rare, or interesting Greek word with its definition each day. The word is then uploaded as a story on an Instagram account, which currently has over 170 active followers.",
+  //     image: "/smarter-by-words-image.jpg",
+  //   },
+  //   {
+  //     title: "Chatty John",
+  //     description:
+  //       "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut enim ad minim veniam, aboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+  //     image: "/chatty-john-image.png",
+  //   },
+  //   {
+  //     title: "devExpert",
+  //     description:
+  //       "Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+  //     image: "/dev-expert-image.png",
+  //   },
+  // ];
 
   const social = [
     {
@@ -141,6 +162,8 @@ export default function MainBody() {
             src="/face.png"
             width={300}
             height={300}
+            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+            priority
             className="animate-float"
             alt="Picture of the author"
           />
