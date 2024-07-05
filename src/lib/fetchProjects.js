@@ -7,7 +7,10 @@ export async function fetchProjectsFromFirestore() {
   querySnapshot.forEach((doc) => {
     data.push({ id: doc.id, ...doc.data() });
   });
-  return data;
+  const sortedData = data.sort((a, b) => a.index - b.index);
+  console.log(data);
+  console.log(sortedData);
+  return sortedData;
 }
 
 export async function fetchProjectFromFirestore(pj) {

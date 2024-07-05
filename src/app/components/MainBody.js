@@ -20,6 +20,28 @@ export default function MainBody() {
   const [currentProject, setCurrentProject] = useState(0);
   const [transitioning, setTransitioning] = useState(false);
   const [projects, setProjects] = useState([]);
+  const social = [
+    {
+      icon: faLinkedin,
+      hoverColor: "hover:text-sky-600",
+      url: "https://www.linkedin.com/in/john-prokopos",
+    },
+    {
+      icon: faGithub,
+      hoverColor: "hover:text-neutral-900",
+      url: "https://github.com/prokoposgiannis",
+    },
+    {
+      icon: faFacebook,
+      hoverColor: "hover:text-blue-600",
+      url: "https://www.facebook.com/prokoposgiannis",
+    },
+    {
+      icon: faSquareInstagram,
+      hoverColor: "hover:text-pink-600",
+      url: "https://www.instagram.com/prokopos.giannis",
+    },
+  ];
 
   useEffect(() => {
     async function fetchData() {
@@ -48,29 +70,6 @@ export default function MainBody() {
       }, 100);
     }
   };
-
-  const social = [
-    {
-      icon: faLinkedin,
-      hoverColor: "hover:text-sky-600",
-      url: "https://www.linkedin.com/in/john-prokopos",
-    },
-    {
-      icon: faGithub,
-      hoverColor: "hover:text-neutral-900",
-      url: "https://github.com/prokoposgiannis",
-    },
-    {
-      icon: faFacebook,
-      hoverColor: "hover:text-blue-600",
-      url: "https://www.facebook.com/prokoposgiannis",
-    },
-    {
-      icon: faSquareInstagram,
-      hoverColor: "hover:text-pink-600",
-      url: "https://www.instagram.com/prokopos.giannis",
-    },
-  ];
 
   return (
     <TopBarLayout>

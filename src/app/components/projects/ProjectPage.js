@@ -3,12 +3,16 @@ import Link from "next/link";
 
 export default function Project({ project }) {
   if (!project) {
-    return <div>No project data available</div>;
+    return (
+      <div className="flex flex-grow justify-center items-center">
+        No project data available
+      </div>
+    );
   }
 
   return (
     <div className="flex flex-row w-full h-full p-6">
-      <div className="relative flex px-3 bg-stone-200 flex-col w-1/2">
+      <div className="relative flex px-3 bg-gray-900 flex-col rounded-lg w-1/2">
         <Image
           src={project.imageUrls[0]}
           fill
