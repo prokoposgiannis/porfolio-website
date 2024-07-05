@@ -37,6 +37,7 @@ export default function ProjectPage({ params }) {
               priority
               style={{
                 objectFit: "contain",
+                objectPosition: "top",
               }}
               sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
               alt="Picture of the project"

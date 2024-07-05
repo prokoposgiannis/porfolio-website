@@ -8,7 +8,7 @@ export default function Project({ project }) {
 
   return (
     <div className="flex flex-row w-full h-full p-6">
-      <div className="relative flex px-3 flex-col w-1/2">
+      <div className="relative flex px-3 bg-stone-200 flex-col w-1/2">
         <Image
           src={project.imageUrls[0]}
           fill
