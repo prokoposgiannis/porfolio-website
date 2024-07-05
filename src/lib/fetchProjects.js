@@ -8,8 +8,6 @@ export async function fetchProjectsFromFirestore() {
     data.push({ id: doc.id, ...doc.data() });
   });
   const sortedData = data.sort((a, b) => a.index - b.index);
-  console.log(data);
-  console.log(sortedData);
   return sortedData;
 }
 
