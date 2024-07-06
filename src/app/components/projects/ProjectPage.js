@@ -18,6 +18,7 @@ export default function Project({ project }) {
           fill
           style={{
             objectFit: "contain",
+            padding: "1rem",
           }}
           priority
           sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"

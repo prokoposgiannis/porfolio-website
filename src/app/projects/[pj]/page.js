@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import Image from "next/image";
 import TopBarLayout from "@/app/components/TopBarLayout";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faHouse } from "@fortawesome/free-solid-svg-icons";
+import { faArrowLeft } from "@fortawesome/free-solid-svg-icons";
 import Link from "next/link";
 import { fetchProjectFromFirestore } from "@/lib/fetchProjects";
 
@@ -57,11 +57,13 @@ export default function ProjectPage({ params }) {
               <p>{project.fullDescription}</p>
             )}
           </div>
-          <p className="italic text-gray-700">{project.tools}</p>
+          <p className="italic text-gray-700">
+            <strong>Tools used:</strong> {project.tools}
+          </p>
           <Link href="/">
             <FontAwesomeIcon
               className="absolute bottom-0 right-0 text-2xl px-4 text-black transition-transform duration-50 transform hover:scale-150"
-              icon={faHouse}
+              icon={faArrowLeft}
             />
           </Link>
         </div>

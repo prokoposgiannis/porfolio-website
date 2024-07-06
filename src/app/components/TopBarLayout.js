@@ -1,5 +1,6 @@
 "use client";
 import React, { useState } from "react";
+import Link from "next/link";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { config } from "@fortawesome/fontawesome-svg-core";
 import "@fortawesome/fontawesome-svg-core/styles.css";
@@ -37,8 +38,12 @@ const TopBarLayout = ({ children }) => {
           style={{ height: "200px" }}
         >
           <div className="flex text-center justify-center font-bold pt-5">
-            <h2 className="px-10">About</h2>
-            <h2 className="px-10">Contact</h2>
+            <Link className="px-10 hover:underline" href="/about">
+              About
+            </Link>
+            <Link className="px-10 hover:underline" href={"/contact"}>
+              Contact
+            </Link>
           </div>
         </div>
       </div>
