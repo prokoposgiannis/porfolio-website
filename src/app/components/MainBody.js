@@ -21,7 +21,7 @@ export default function MainBody() {
               some of my work below!
             </p>
           </div>
-          <div className="relative flex h-64 mt-5 md:h-2/3.5">
+          <div className="flex-1">
             <ProjectsNav />
           </div>
         </div>
@@ -36,7 +36,7 @@ export default function MainBody() {
             alt="Picture of the author"
           />
           <div className="user-select-none flex w-full justify-center flex-grow items-end">
-            <SocialIcons />
+            <SocialIcons showEmail={false} />
           </div>
         </div>
       </div>

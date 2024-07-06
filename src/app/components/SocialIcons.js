@@ -8,8 +8,6 @@ import {
 import { faEnvelope } from "@fortawesome/free-solid-svg-icons";
 
 export default function SocialIcons({ showEmail }) {
-  console.log(showEmail);
-
   const social = [
     {
       icon: faLinkedin,

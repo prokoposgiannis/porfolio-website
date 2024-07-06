@@ -42,7 +42,7 @@ export default function ProjectsNav() {
   };
 
   return (
-    <>
+    <div className="relative flex h-64 mt-5 md:h-2/3.5">
       <div className="absolute left-0 flex h-full items-center justify-center">
         <FontAwesomeIcon
           icon={faChevronLeft}
@@ -54,7 +54,6 @@ export default function ProjectsNav() {
           onClick={handlePreviousClick}
         />
       </div>
-
       <div
         className={`h-full shadow-lg bg-gray-100 rounded-2xl transition-opacity duration-100 w-full ${
           transitioning ? "opacity-0" : "opacity-100"
@@ -74,6 +73,6 @@ export default function ProjectsNav() {
           onClick={handleNextClick}
         />
       </div>
-    </>
+    </div>
   );
 }
