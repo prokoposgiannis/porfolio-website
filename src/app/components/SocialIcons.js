@@ -5,11 +5,9 @@ import {
   faFacebook,
   faSquareInstagram,
 } from "@fortawesome/free-brands-svg-icons";
-import { faEnvelope } from "@fortawesome/free-solid-svg-icons";
+import EmailComponent from "@/app/components/EmailComponent";
 
 export default function SocialIcons({ showEmail }) {
-  console.log(showEmail);
-
   const social = [
     {
       icon: faLinkedin,
@@ -35,7 +33,7 @@ export default function SocialIcons({ showEmail }) {
 
   return (
     <>
-      {social.map((s, index) => (
+      {social.map((s) => (
         <a
           key={s.icon.iconName}
           href={s.url}
@@ -44,20 +42,11 @@ export default function SocialIcons({ showEmail }) {
         >
           <FontAwesomeIcon
             icon={s.icon}
-            className={`user-select-none text-3xl px-4 text-gray-600 transition-transform duration-50 transform hover:scale-150 ${s.hoverColor}`}
+            className={`user-select-none text-3xl px-4 text-gray-600 transition-transform duration-10 transform hover:scale-110 ${s.hoverColor}`}
           />
         </a>
       ))}
-      {showEmail && (
-        <a target="_blank" rel="noopener noreferrer">
-          <FontAwesomeIcon
-            icon={faEnvelope}
-            className={
-              "user-select-none text-3xl px-4 text-gray-600 transition-transform duration-50 transform hover:scale-150 hover:text-gray-900"
-            }
-          />
-        </a>
-      )}
+      {showEmail && <EmailComponent />}
     </>
   );
 }

@@ -5,9 +5,9 @@ import SocialIcons from "@/app/components/SocialIcons";
 
 export default function MainBody() {
   return (
-    <TopBarLayout>
+    <TopBarLayout showHome={false}>
       <div className="flex flex-col md:flex-row flex-grow px-16 pt-1/4.7 pb-12">
-        <div className="flex flex-col md:w-2/3">
+        <div className="flex flex-col w-full md:w-2/3">
           <div className="mb-4">
             <h2 className="-ml-4 text-2xl font-medium text-gray-700">
               my name is..
@@ -36,7 +36,7 @@ export default function MainBody() {
             alt="Picture of the author"
           />
           <div className="user-select-none flex w-full justify-center flex-grow items-end">
-            <SocialIcons />
+            <SocialIcons showEmail={false} />
           </div>
         </div>
       </div>

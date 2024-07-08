@@ -8,7 +8,7 @@ import { faChevronUp, faChevronDown } from "@fortawesome/free-solid-svg-icons";
 
 config.autoAddCss = false; // Prevent FontAwesome from adding its own CSS
 
-const TopBarLayout = ({ children }) => {
+const TopBarLayout = ({ showHome = true, children }) => {
   const [isOpen, setIsOpen] = useState(false);
 
   const toggleBar = () => {
@@ -16,7 +16,7 @@ const TopBarLayout = ({ children }) => {
   };
 
   return (
-    <div className="flex h-full">
+    <div className="flex flex-grow w-full h-full">
       <div className="relative">
         <button
           className={`text-black fixed left-1/2 transform -translate-x-1/2 z-50 font-bold transition-all duration-300 ${
@@ -37,17 +37,22 @@ const TopBarLayout = ({ children }) => {
           } z-40`}
           style={{ height: "200px" }}
         >
-          <div className="flex text-center justify-center font-bold pt-5">
-            <Link className="px-10 hover:underline" href="/about">
+          <div className="flex justify-center font-bold pt-5">
+            {showHome && (
+              <Link className="mx-10 hover:underline" href="/">
+                Home
+              </Link>
+            )}
+            <Link className="mx-10 hover:underline" href="/about">
               About
             </Link>
-            <Link className="px-10 hover:underline" href={"/contact"}>
+            <Link className="mx-10 hover:underline" href={"/contact"}>
               Contact
             </Link>
           </div>
         </div>
       </div>
-      <div className="flex">{children}</div>
+      {children}
     </div>
   );
 };
