@@ -6,8 +6,8 @@ import SocialIcons from "@/app/components/SocialIcons";
 export default function MainBody() {
   return (
     <TopBarLayout>
-      <div className="flex flex-col md:flex-row flex-grow px-16 pt-1/4.7 pb-12">
-        <div className="flex flex-col w-full md:w-2/3">
+      <div className="flex flex-col md:flex-row flex-grow px-16 md:mb-10 pt-1/4.7">
+        <div className="flex flex-col h-fit w-full md:w-2/3">
           <div className="mb-4">
             <h1 className="text-5xl font-bold text-gray-900 mt-4">
               Contact me
@@ -17,12 +17,12 @@ export default function MainBody() {
               the traditional method below:
             </p>
           </div>
-          <div className="relative flex h-64 mt-5 md:h-2/3.5">
+          <div className="relative w-full flex h-full my-5 md:h-2/3.5">
             <ContactForm />
           </div>
         </div>
         <div className="md:pl-14 user-select-none flex flex-col items-center md:w-1/3">
-          <div className="rounded-lg shadow-lg overflow-hidden">
+          <div className="rounded-lg shadow-lg  mb-6 overflow-hidden">
             <Image
               src="/contact-image.jpg"
               width={300}
@@ -32,7 +32,7 @@ export default function MainBody() {
               alt="Picture of the developer"
             />
           </div>
-          <div className="user-select-none flex w-full justify-center flex-grow items-end">
+          <div className="user-select-none flex w-full mb-6 justify-center flex-grow items-end">
             <SocialIcons showEmail={true} />
           </div>
         </div>
