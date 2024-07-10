@@ -33,7 +33,7 @@ export const EmailTemplate = ({ name }) => (
             style={{ margin: "auto" }}
           />
           <Heading style={global.heading}>
-            Thank you for your message, {name ?? "anonymous"}!
+            Thank you for your message, {name === "" ? "anonymous" : name}!
           </Heading>
           <Text style={global.text}>
             One of my personalities will reply to you shortly, and I really hope
