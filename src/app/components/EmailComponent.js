@@ -13,7 +13,7 @@ export default function EmailComponent() {
         <FontAwesomeIcon
           icon={faEnvelope}
           className={
-            "user-select-none text-3xl px-4 text-gray-600 transition-transform duration-50 transform hover:scale-150 hover:text-gray-900"
+            "user-select-none text-3xl px-4 text-gray-600 transition-transform duration-50 transform hover:scale-125 hover:text-gray-900"
           }
         />
       </div>

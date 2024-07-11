@@ -42,7 +42,7 @@ export default function SocialIcons({ showEmail }) {
         >
           <FontAwesomeIcon
             icon={s.icon}
-            className={`user-select-none text-3xl px-4 text-gray-600 transition-transform duration-10 transform hover:scale-150 ${s.hoverColor}`}
+            className={`user-select-none text-3xl px-4 text-gray-600 transition-transform duration-10 transform hover:scale-125 ${s.hoverColor}`}
           />
         </a>
       ))}

@@ -46,7 +46,7 @@ const TopBarLayout = ({ showHome = true, children }) => {
             <Link className="mx-10 hover:underline" href="/about">
               About
             </Link>
-            <Link className="mx-10 hover:underline" href="/about">
+            <Link className="mx-10 hover:underline" href="/articles">
               Articles
             </Link>
             <Link className="mx-10 hover:underline" href={"/contact"}>
