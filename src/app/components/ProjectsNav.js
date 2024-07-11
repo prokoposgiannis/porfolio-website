@@ -18,7 +18,6 @@ export default function ProjectsNav() {
     async function fetchData() {
       const data = await fetchProjectsFromFirestore();
       setProjects(data);
-      setCurrentUrl(data[currentProject].nextUrl);
     }
     fetchData();
   }, []);
@@ -43,42 +42,6 @@ export default function ProjectsNav() {
     }
   };
 
-  //   return (
-  //     <>
-  //       <div className="absolute left-0 flex h-full items-center justify-center">
-  //         <FontAwesomeIcon
-  //           icon={faChevronLeft}
-  //           className={`user-select-none text-xl ${
-  //             currentProject === 0
-  //               ? "text-gray-400"
-  //               : "transform transition-transform duration-50 hover:scale-150 text-black"
-  //           }`}
-  //           onClick={handlePreviousClick}
-  //         />
-  //       </div>
-
-  //       <div
-  //         className={`h-full shadow-lg bg-gray-100 rounded-2xl transition-opacity duration-100 w-full ${
-  //           transitioning ? "opacity-0" : "opacity-100"
-  //         }`}
-  //       >
-  //         <ProjectPage project={projects[currentProject]} />
-  //       </div>
-
-  //       <div className="absolute right-0 flex h-full items-center justify-center">
-  //         <FontAwesomeIcon
-  //           icon={faChevronRight}
-  //           className={`user-select-none text-xl ${
-  //             currentProject === projects.length - 1
-  //               ? "text-gray-400"
-  //               : "transform transition-transform duration-50 hover:scale-150 text-black"
-  //           }`}
-  //           onClick={handleNextClick}
-  //         />
-  //       </div>
-  //     </>
-  //   );
-  // }
   return (
     <>
       <div className="absolute left-0 flex h-full items-center justify-center">
@@ -102,10 +65,6 @@ export default function ProjectsNav() {
           <ProjectPage project={projects[currentProject]} />
         </div>
       </div>
-
-      {/* <div className="justify-center items-center absolute bottom-1 right-6 flex flex-col user-select-none hover:underline text-gray-800 text-md transform transition-transform duration-50 hover:scale-110">
-        <Link href={`/projects/${currentUrl}`}>details</Link>
-      </div> */}
 
       <div className="absolute right-0 flex h-full items-center justify-center">
         <FontAwesomeIcon
